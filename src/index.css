@@ -1,0 +1,32 @@
+* {
+    box-sizing: border-box;
+}
+html {
+    font-size: 20px;
+}
+body {
+    width: 100%;
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 300;
+    font-family: "Roboto", sans-serif;
+    color: #172b4d;
+    overflow-x: hidden;
+}
+
+h1,
+h2 {
+    text-align: center;
+}
+
+h1 {
+    font-weight: 500;
+    margin: 2rem auto;
+}
+
+.container {
+    width: 100%;
+    max-width: 50rem;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
