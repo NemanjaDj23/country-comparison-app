@@ -6,10 +6,7 @@ import "./Chart.scss";
 export default class Chart extends PureComponent {
     getData = () => {
         const color = ["#00441d", "#00783b", "#4dae65", "#71c185"];
-        let sum = this.props.selectedCountries.reduce(
-            (accumulator, currentValue) => accumulator + currentValue.population,
-            0
-        );
+        let sum = this.props.selectedCountries.reduce((acc, currentCountry) => acc + currentCountry.population, 0);
 
         return this.props.selectedCountries.map((country, index) => {
             return {
@@ -42,8 +39,8 @@ export default class Chart extends PureComponent {
 
                         <Bar dataKey="population">
                             <LabelList dataKey="percentageOfPopulation" position="insideTop" fill="#ffffff" />
-                            {data.map((d, index) => (
-                                <Cell key={`cell-${index}`} fill={d.color} />
+                            {data.map((d) => (
+                                <Cell key={d.name} fill={d.color} />
                             ))}
                         </Bar>
                     </BarChart>
