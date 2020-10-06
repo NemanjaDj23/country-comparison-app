@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
-import "./Chart.scss";
 
 import { ResponsiveContainer, BarChart, Bar, YAxis, LabelList, Legend, Cell } from "recharts";
+import "./Chart.scss";
 
 export default class Chart extends PureComponent {
     getData = () => {
@@ -10,18 +10,15 @@ export default class Chart extends PureComponent {
             (accumulator, currentValue) => accumulator + currentValue.population,
             0
         );
-        let data = [];
 
-        this.props.selectedCountries.map((country, index) => {
-            return data.push({
+        return this.props.selectedCountries.map((country, index) => {
+            return {
                 name: country.name,
                 population: country.population,
                 percentageOfPopulation: `${this.percentageOfPopulation(sum, country.population)} %`,
                 color: color[index],
-            });
+            };
         });
-
-        return data;
     };
 
     percentageOfPopulation = (sum, population) => {
@@ -29,11 +26,7 @@ export default class Chart extends PureComponent {
     };
 
     payload = () => {
-        let arr = [];
-        this.getData().map((data) => {
-            return arr.push({ value: data.name, type: "square", color: data.color });
-        });
-        return arr;
+        return this.getData().map((data) => ({ value: data.name, type: "square", color: data.color }));
     };
 
     render() {
